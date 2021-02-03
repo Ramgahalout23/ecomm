@@ -26,6 +26,27 @@ img.slider-img{
 .slider-text{
         background-color: #24465454 !important;
     }
+    .trending-img{
+        height: 100px;
+    }
+    .tredning-item{
+        float: left;
+        width: 20%;
+    }
+    .trending-wrapper{
+        margin: 20px;
+    }
+    .detail-img{
+        height: 200px;
+    }
+    .search-form{
+        width: 500px !important
+    }
+    .cart-list-devider {
+    border-bottom: 1px solid #ccc;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+}
 </style>
 </head>
 
