@@ -5,6 +5,7 @@ use Session;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Cart;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Contracts\Session\Session as SessionSession;
 use PhpParser\Node\Expr\New_;
 
@@ -46,5 +47,21 @@ static function cartItem()
     {
         $userId=Session::get('user')['id'];
         return Cart::where('user_id',$userId)->count();
+    }
+  function   cartlist(){    
+    $userId= Session::get('user')['id'];
+    $data=  DB::table('cart')
+      ->join('products','cart.product_id','products.id')
+      ->select('products.*','cart.id as cart_id')
+      ->where('cart.user_id',$userId)
+      ->get();
+
+      return view('cartlist',['products'=>$data]);
+  }
+
+  function removeCart($id)
+    {
+         Cart::destroy($id);
+        return redirect('cartlist');
     }
 }

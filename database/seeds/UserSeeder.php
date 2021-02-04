@@ -12,12 +12,26 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('users')->insert([
-            'name'=>'ram',
-            'email'=>'ramgahalout@gmail.com',
-            'password'=>Hash::make('12345')
 
+        $mul_rows= [
+            [  'name'=>'ram',
+               'email'=>'ramgahalout@gmail.com',
+               'password'=>Hash::make('12345')],
 
-        ]);
+            [  'name'=>'ansh',
+               'email'=>'ansh@gmail.com',
+               'password'=>Hash::make('12345')],
+        ];
+        
+        foreach ($mul_rows as $rows) {
+           //$insert = DB::table('departments')->insert($mul_rows); old
+           $insert= DB::table('users')->insert($rows);
+        if($insert){
+        //success message here
+        }else{
+        //Failure message here
+        }
+        }
+
     }
 }
